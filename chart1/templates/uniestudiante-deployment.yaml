@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: api
+  name: uniestudiante-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - image: jeanvaes/uniestudiante:2.0.8
+        name: uniestudiante
+        ports:
+        - containerPort: 8080
+        startupProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 45
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          periodSeconds: 5
+        env:   # Variables de entorno
+          - name: DB_HOST
+            value: mysql
+
+          - name: DB_NAME
+            value: estudiantes
+
+          - name: DB_USERNAME
+            value: root
+
+          - name: DB_PASSWORD
+            value: root
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "400m"
+          limits: 
+            memory: "800Mi"
+            cpu: "800m"
+
+---
+
+apiVersion: v1 
+kind: Service 
+metadata:
+  name: springboot
+spec:
+  selector:
+    app: api
+  ports:
+    - protocol: "TCP"
+      port: 8080 
+      targetPort: 8080
+  type: ClusterIP 
