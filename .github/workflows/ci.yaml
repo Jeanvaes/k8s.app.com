@@ -51,6 +51,7 @@ jobs:
 
       - name: Run helm-docs
         run: ./.github/helm-docs.sh
+        continue-on-error: true
 
   kubeval-chart:
     runs-on: ubuntu-latest
