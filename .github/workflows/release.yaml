@@ -29,7 +29,7 @@ jobs:
 
       - name: Build chart dependencies
         run: |
-          for dir in chart1/*/
+          for dir in chart1/
           do
               (cd ${dir}; helm dependency build)
           done
