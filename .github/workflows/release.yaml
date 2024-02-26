@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'chart1/**'
+      - 'Charts/chart1/**'
   workflow_dispatch:
 
 jobs:
@@ -29,7 +29,7 @@ jobs:
 
       - name: Build chart dependencies
         run: |
-          for dir in chart1/
+          for dir in Charts/chart1/
           do
               (cd ${dir}; helm dependency build)
           done
