@@ -72,6 +72,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Set Execute Permission for helm-docs.sh
+        run: chmod +x .github/kubeval.sh
+
       - name: Run kubeval
         env:
           KUBERNETES_VERSION: ${{ matrix.k8s }}
