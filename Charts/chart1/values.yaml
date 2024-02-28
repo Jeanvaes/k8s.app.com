@@ -2,5 +2,5 @@ service:
   port: 80
 
 image:
-  repository: jeanvaes/uniestudiantes
+  repository: jeanvaes/uniestudiante
   tag: 15
