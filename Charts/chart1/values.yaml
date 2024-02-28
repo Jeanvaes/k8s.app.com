@@ -3,4 +3,4 @@ service:
 
 image:
   repository: jeanvaes/uniestudiantes
-  tag: 4
+  tag: 15
