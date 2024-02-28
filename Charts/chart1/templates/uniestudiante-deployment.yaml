@@ -15,7 +15,7 @@ spec:
         app: api
     spec:
       containers:
-      - image: jeanvaes/uniestudiante:2.0.8
+      - image:  "{{ .Values.image.repository }}:{{ .Values.image.tag }}" 
         name: uniestudiante
         ports:
         - containerPort: 8080
