@@ -53,8 +53,8 @@ Enable `renovate.configEnableHelmTpl` to use helm templates for generated renova
 Allows you to reference values using `"{{ .Values.someValue }}"` in your config
 
 **NOTE**: setting `renovate.configEnableHelmTpl` to true means that you have to
-escape your config entries containing `{{` (i.e. `"key": "{{depName}}"`) in the
-value by wrapping it like: `"key": "{{ "{{depName}}" }}"`.
+escape your config entries containing `{{` (i.e. `"key": "{{{{depName}}}}"`) in the
+value by wrapping it like: `"key": "{{{{ "{{depName}}" }}}}"`.
 
 ## Renovate full image
 
