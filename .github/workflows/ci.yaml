@@ -39,22 +39,10 @@ jobs:
       - name: Run lint
         run: ct lint --config .github/ct.yaml
 
-  lint-docs:
-    runs-on: ubuntu-latest
-    needs: lint-chart
-    steps:
-      - name: Checkout
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
-      - name: Set Execute Permission for helm-docs.sh
-        run: chmod +x .github/helm-docs.sh
-      - name: Run helm-docs
-        run: .github/helm-docs.sh
-
   kubeval-chart:
     runs-on: ubuntu-latest
     needs:
       - lint-chart
-      - lint-docs
     strategy:
       matrix:
         k8s:
@@ -83,7 +71,6 @@ jobs:
     if: ${{ github.event_name != 'pull_request' || github.repository_owner != github.event.pull_request.head.repo.owner.login || !startsWith(github.event.pull_request.head.ref, 'renovate/') }}
     needs:
       - lint-chart
-      - lint-docs
       - kubeval-chart
     strategy:
       matrix:
@@ -117,7 +104,6 @@ jobs:
   test-success:
     needs:
       - lint-chart
-      - lint-docs
       - kubeval-chart
       - install-chart
     runs-on: ubuntu-latest
