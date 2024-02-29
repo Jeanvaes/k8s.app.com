@@ -3,7 +3,7 @@ entries:
   uniestudiantes:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-02-25T21:18:04.9858906-05:00"
+    created: "2024-02-28T19:06:20.1956952-05:00"
     description: repo de los estudiante
     digest: 0cea65cb6824629d31eb1dd6a7838104aba61aed4de558c31f8008946ffe26b1
     name: uniestudiantes
@@ -11,4 +11,4 @@ entries:
     urls:
     - Packages/uniestudiantes-0.1.0.tgz
     version: 0.1.0
-generated: "2024-02-25T21:18:04.9840391-05:00"
+generated: "2024-02-28T19:06:20.1950828-05:00"
